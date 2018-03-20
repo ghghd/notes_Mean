@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1>Anonymous Notes</h1>
+  </div>
+  <div>
+    <form (submit)="onSubmit()">
+      <h4>Note:</h4><input type="text" name="note.text" [(ngModel)]="note.text"/>
+      <input type="submit" value="Add Note" />
+      <p *ngIf='error'>{{error.text.message}}</p>
+    </form>
+  </div>
+  <div class="wrapper">
+    <div *ngFor="let notes of all" class="text">
+      {{notes.text}}
+      <div class="time">
+        Noted On:  {{ notes.createdAt | date:'MM-dd-yyyy hh:mm'}}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
